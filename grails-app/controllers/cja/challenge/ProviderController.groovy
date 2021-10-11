@@ -13,7 +13,7 @@ class ProviderController {
         response.setContentType("application/json")
         try {
             response.status = 200
-            render providerService.fetchFromDomain(params.isActive) as JSON
+            render providerService.list(params.isActive) as JSON
         } catch(Exception e) {
             LOGGER.error(e.message)
             response.status = 500

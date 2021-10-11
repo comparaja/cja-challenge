@@ -27,11 +27,11 @@ class ProductService {
         Product.withNewTransaction {
             productList = Product.createCriteria().list {
                 if (request.isActive)
-                    eq("isActive", request.isActive)
+                    eq("isActive", (Boolean) request.isActive)
                 if (request.providerId)
-                    eq("providerId", request.providerId)
+                    eq("providerId", (Integer) request.providerId)
                 if (request.connectionTypeId)
-                    eq("connectionTypeId", request.connectionTypeId)
+                    eq("connectionTypeId", (Integer)  request.connectionTypeId)
                 if(request.sort != null && request.sort.fieldSort != null)
                     order(request.sort.fieldSort, request.sort.direction != null ? request.sort.direction : "desc")
             }

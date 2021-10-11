@@ -14,7 +14,7 @@ class ProductController {
         response.setContentType("application/json")
         try {
             response.status = 200
-            render productService.fetchFromDomain(listRequest) as JSON
+            render productService.list(listRequest) as JSON
         } catch(Exception e) {
             LOGGER.error(e.message)
             response.status = 500

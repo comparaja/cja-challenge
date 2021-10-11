@@ -14,7 +14,8 @@ class ConnectionTypeService {
 
     def list(def isActive) {
         try {
-            return fetchFromDomain(isActive)
+            def active = (Boolean) isActive
+            return fetchFromDomain(active)
         } catch(SQLException e) {
             LOGGER.error(e.message)
         }

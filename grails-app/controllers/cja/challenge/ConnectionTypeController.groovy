@@ -13,7 +13,7 @@ class ConnectionTypeController {
         response.setContentType("application/json")
         try {
             response.status = 200
-            render connectionTypeService.fetchFromDomain(params.isActive) as JSON
+            render connectionTypeService.list(params.isActive) as JSON
         } catch(Exception e) {
             LOGGER.error(e.message)
             response.status = 500
