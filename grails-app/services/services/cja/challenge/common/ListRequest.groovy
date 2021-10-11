@@ -18,5 +18,8 @@ class ListRequest {
     @JsonProperty
     SortRequest sortRequest
 
+    @JsonProperty
+    Boolean isActive
+
 
 }
