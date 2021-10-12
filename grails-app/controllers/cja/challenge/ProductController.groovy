@@ -18,7 +18,7 @@ class ProductController {
         } catch(Exception e) {
             LOGGER.error(e.message)
             response.status = 500
-            render(status: response.status, text: e.printStackTrace())
+            render(status: response.status, text: e.message)
         }
 
     }

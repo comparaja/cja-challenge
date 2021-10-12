@@ -34,6 +34,7 @@ class Product {
         monthlyPrice nullable: false
         dateCreated nullable: false
         createdBy nullable: false
+        isActive nullable: true
     }
 
     static mapping = {

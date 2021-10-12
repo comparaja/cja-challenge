@@ -24,8 +24,12 @@ class ProductService {
         List<?> productList = new ArrayList<>()
         Product.withNewTransaction {
             productList = Product.createCriteria().list {
-                if (isActive != null)
-                    eq("isActive", (Boolean) isActive)
+                if (isActive != null) {
+                    or{
+                        eq("isActive", (Boolean) isActive)
+                        isNull("isActive")
+                    }
+                }
                 if (providerId != null)
                     eq("providerId", Integer.parseInt(providerId))
                 if (connectionTypeId != null)
