@@ -8,6 +8,7 @@ class ProductController {
 
     def productService
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+    static allowedMethods = [list: "GET"]
 
     def list() {
         response.setContentType("application/json")

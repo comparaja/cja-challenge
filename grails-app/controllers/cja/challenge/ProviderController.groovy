@@ -8,6 +8,7 @@ class ProviderController {
 
     def providerService
     private static final Logger LOGGER = LoggerFactory.getLogger(ProviderController.class);
+    static allowedMethods = [list: "GET"]
 
     def list() {
         response.setContentType("application/json")

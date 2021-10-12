@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory
 class ConnectionTypeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionTypeController.class);
+    static allowedMethods = [list: "GET"]
 
     def connectionTypeService
     def list() {
