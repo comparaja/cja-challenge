@@ -27,6 +27,8 @@ class Product {
 
     String modifiedBy
 
+    Boolean isActive
+
     static constraints = {
         providerId nullable: false
         monthlyPrice nullable: false

@@ -12,28 +12,26 @@ class ProductService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
 
-    def list(def request) {
-        if(request == null)
-            throw new IllegalArgumentException("no request found!")
+    def list(def isActive, def providerId, def connectionTypeId, def sortBy, def sortDirection) {
         try {
-            return fetchFromDomain(request)
+            return fetchFromDomain(isActive, providerId, connectionTypeId, sortBy, sortDirection)
         } catch(SQLException e) {
             LOGGER.error(e.message)
         }
     }
 
-    def fetchFromDomain(def request) {
+    def fetchFromDomain(def isActive, def providerId, def connectionTypeId, def sortBy, def sortDirection) {
         List<?> productList = new ArrayList<>()
         Product.withNewTransaction {
             productList = Product.createCriteria().list {
-                if (request.isActive)
-                    eq("isActive", (Boolean) request.isActive)
-                if (request.providerId)
-                    eq("providerId", (Integer) request.providerId)
-                if (request.connectionTypeId)
-                    eq("connectionTypeId", (Integer)  request.connectionTypeId)
-                if(request.sort != null && request.sort.fieldSort != null)
-                    order(request.sort.fieldSort, request.sort.direction != null ? request.sort.direction : "desc")
+                if (isActive != null)
+                    eq("isActive", (Boolean) isActive)
+                if (providerId != null)
+                    eq("providerId", Integer.parseInt(providerId))
+                if (connectionTypeId != null)
+                    eq("connectionTypeId", Integer.parseInt(connectionTypeId))
+                if(sortBy != null && sortDirection != null)
+                    order(sortBy, sortDirection != null ? sortDirection : "desc")
             }
         }
         return productList
